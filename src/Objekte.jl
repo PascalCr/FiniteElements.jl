@@ -1,4 +1,4 @@
-export Platte, tempiter
+export Platte
 
 struct Platte{T<:AbstractFloat, Ti<:Integer}
     xL::T
