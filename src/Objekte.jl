@@ -22,7 +22,7 @@ function Platte(xL::T, yL::T, nx::Ti, ny::Ti, dens, heat, cap, tv::Union{Number,
         end
 
         function setgrid(f::Function)
-            return [f((ix - 0.5) * xL / nx, (iy - 0.5) * xL / ny) for ix in 1:nx, iy in 1:ny]
+            return [f((iy - 0.5) * yL / ny, (ix - 0.5) * xL / nx) for ix in 1:nx, iy in 1:ny]
         end
 
     rho = setgrid(dens)
@@ -96,3 +96,5 @@ function nablay(m::Matrix, ix, iy, p::Platte)
     iy == p.ny ? (m[ix, iy] - m[ix, iy - 1]) / dy :
     (m[ix, iy + 1] - m[ix, iy - 1]) / (2 * dy)
 end
+
+nothing
